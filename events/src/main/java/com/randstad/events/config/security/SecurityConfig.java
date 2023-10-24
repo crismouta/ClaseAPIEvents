@@ -42,7 +42,8 @@ public class SecurityConfig {
                 .cors(withDefaults())
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("api/v1/events").hasAuthority("rol")
+                                .requestMatchers("api/v1/events").hasAnyAuthority("admin", "client")
+
                         )
                 .oauth2ResourceServer(oauth2ResourceServer ->
                                 oauth2ResourceServer
